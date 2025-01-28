@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src='index.js'></script>
+</head>
+<body>
+    <button id='my-button'>Start Stream</button>
+    <video autoplay id="video"></video>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadcaster</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script>
+        // Replace this with your server's IP address
+        const SERVER_URL = 'https://192.168.2.196:5000';
+    </script>
+    <script src='index.js'></script>
+    <style>
+        video {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .error {
+            background: #ffebee;
+        }
+
+        .success {
+            background: #e8f5e9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Broadcaster</h1>
+    <button id='my-button'>Start Stream</button>
+    <div id="status" class="status"></div>
+    <video autoplay playsinline id="video"></video>
+</body>
+
+</html>
