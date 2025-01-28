@@ -1,51 +1,11 @@
-// window.onload = () => {
-//     document.getElementById('my-button').onclick = () => {
-//         init();
-//     }
-// }
+let statusDiv;
 
-// async function init() {
-//     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-//     document.getElementById("video").srcObject = stream;
-//     const peer = createPeer();
-//     stream.getTracks().forEach(track => peer.addTrack(track, stream));
-// }
-
-
-// function createPeer() {
-//     const peer = new RTCPeerConnection({
-//         iceServers: [
-//             {
-//                 urls: "stun:stun.stunprotocol.org"
-//             }
-//         ]
-//     });
-//     peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
-
-//     return peer;
-// }
-
-// async function handleNegotiationNeededEvent(peer) {
-//     const offer = await peer.createOffer();
-//     await peer.setLocalDescription(offer);
-//     const payload = {
-//         sdp: peer.localDescription
-//     };
-
-//     const { data } = await axios.post('/broadcast', payload);
-//     const desc = new RTCSessionDescription(data.sdp);
-//     peer.setRemoteDescription(desc).catch(e => console.log(e));
-// }
-
-
-// let statusDiv;
-
-// window.onload = () => {
-//     statusDiv = document.getElementById('status');
-//     document.getElementById('my-button').onclick = () => {
-//         init();
-//     }
-// }
+window.onload = () => {
+    statusDiv = document.getElementById('status');
+    document.getElementById('my-button').onclick = () => {
+        init();
+    }
+}
 
 // async function init() {
 //     try {
@@ -65,64 +25,6 @@
 //         console.error('Initialization error:', error);
 //     }
 // }
-
-// function createPeer() {
-//     const peer = new RTCPeerConnection({
-//         iceServers: [
-//             { urls: "stun:stun.l.google.com:19302" },
-//             { urls: "stun:stun1.l.google.com:19302" },
-//             { urls: "stun:stun2.l.google.com:19302" }
-//         ]
-//     });
-
-//     peer.oniceconnectionstatechange = () => {
-//         updateStatus('ICE Connection State: ' + peer.iceConnectionState, 'normal');
-//         console.log('ICE Connection State:', peer.iceConnectionState);
-//     };
-
-//     peer.onconnectionstatechange = () => {
-//         console.log('Connection State:', peer.connectionState);
-//     };
-
-//     peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
-
-//     return peer;
-// }
-
-// async function handleNegotiationNeededEvent(peer) {
-//     try {
-//         updateStatus('Creating connection offer...', 'normal');
-//         const offer = await peer.createOffer();
-//         await peer.setLocalDescription(offer);
-        
-//         const payload = {
-//             sdp: peer.localDescription
-//         };
-
-//         const { data } = await axios.post(`${SERVER_URL}/broadcast`, payload);
-//         const desc = new RTCSessionDescription(data.sdp);
-//         await peer.setRemoteDescription(desc);
-//         updateStatus('Stream connection established', 'success');
-//     } catch (error) {
-//         updateStatus('Connection error: ' + error.message, 'error');
-//         console.error('Negotiation error:', error);
-//     }
-// }
-
-// function updateStatus(message, type) {
-//     statusDiv.textContent = message;
-//     statusDiv.className = 'status ' + type;
-// }
-
-
-let statusDiv;
-
-window.onload = () => {
-    statusDiv = document.getElementById('status');
-    document.getElementById('my-button').onclick = async () => {
-        init();
-    }
-}
 
 async function init() {
     try {
@@ -170,9 +72,6 @@ function createPeer() {
 
     peer.onconnectionstatechange = () => {
         console.log('Connection State:', peer.connectionState);
-        if (peer.connectionState === 'disconnected') {
-            updateStatus('Connection lost. Please restart the stream.', 'error');
-        }
     };
 
     peer.onnegotiationneeded = () => handleNegotiationNeededEvent(peer);
@@ -204,3 +103,4 @@ function updateStatus(message, type) {
     statusDiv.textContent = message;
     statusDiv.className = 'status ' + type;
 }
+
