@@ -109,7 +109,7 @@ function getLocalIp() {
 }
 
 const PORT = 5000;
-const IP = '192.168.2.196';
+const IP = 'IP';
 
 // Create HTTPS server
 const httpsServer = https.createServer(sslOptions, app);
