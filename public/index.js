@@ -6,7 +6,7 @@ window.onload = () => {
         init();
     }
 }
-
+// Camera 
 // async function init() {
 //     try {
 //         updateStatus('Requesting camera access...', 'normal');
@@ -26,6 +26,7 @@ window.onload = () => {
 //     }
 // }
 
+// Screen Sharing
 async function init() {
     try {
         updateStatus('Requesting screen share access...', 'normal');
@@ -36,7 +37,6 @@ async function init() {
             audio: false
         });
 
-        // Handle stream stop
         stream.getVideoTracks()[0].addEventListener('ended', () => {
             updateStatus('Screen sharing has ended', 'normal');
         });
